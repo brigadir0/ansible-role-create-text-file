@@ -1,0 +1,19 @@
+---
+- name: Создать текстовый файл на сервере
+  hosts: all
+  become: true
+  vars:
+    file_path: "/opt/message.txt"
+    file_content: "Всем привет!"
+  tasks:
+    - name: Создать каталог (если его нет)
+      file:
+        path: "{{ file_path | dirname }}"
+        state: directory
+        mode: '0755'
+
+    - name: Создать текстовый файл с содержимым
+      copy:
+        dest: "{{ file_path }}"
+        content: "{{ file_content }}\n"
+        mode: '0644'

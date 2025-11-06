@@ -1,0 +1,12 @@
+---
+- name: Создать каталог (если его нет)
+  file:
+    path: "{{ text_file_path | dirname }}"
+    state: directory
+    mode: '0755'
+
+- name: Создать текстовый файл с содержимым
+  copy:
+    dest: "{{ text_file_path }}"
+    content: "{{ text_file_content }}\n"
+    mode: '0644'

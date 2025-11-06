@@ -1,0 +1,6 @@
+---
+- name: Создать текстовый файл на сервере с помощью роли
+  hosts: all
+  become: true
+  roles:
+    - create_text_file

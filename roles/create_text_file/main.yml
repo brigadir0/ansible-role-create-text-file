@@ -1,0 +1,5 @@
+---
+galaxy_info:
+  author: borz
+  description: Создает текстовый файл с заданным содержимым
+  license: MIT
