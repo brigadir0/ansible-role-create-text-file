@@ -1,1 +1,21 @@
-sh "ansible-playbook -i hosts.ini playbook.yml"
+pipeline {
+  agent any
+
+  stages {
+    stage('Run Ansible playbook') {
+      steps {
+        // Запускается на агенте как shell команда
+        sh 'ansible-playbook -i hosts.ini playbook.yml'
+      }
+    }
+  }
+
+  post {
+    success {
+      echo 'Playbook выполнен успешно'
+    }
+    failure {
+      echo 'Playbook завершился с ошибкой'
+    }
+  }
+}
